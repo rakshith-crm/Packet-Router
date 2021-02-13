@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1605793866 source:c:\users\indian\desktop\rakshith\ads\project\priority_queue_using_heap\main.cpp
+	<stdio.h>
+	"linked_list.h"
+	<fstream>
+	<thread>
+	<mutex>
+	<chrono>
+	<time.h>
+
+1605770294 c:\users\indian\desktop\rakshith\ads\project\priority_queue_using_heap\linked_list.h
+	<iostream>
+	<string.h>
+
