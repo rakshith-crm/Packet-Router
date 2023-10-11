@@ -5,11 +5,11 @@
 #include <mutex>
 #include <chrono>
 #include <time.h>
-int tree_array_size = 20;
-int heap_size = 0;
+
+const int tree_array_size = 20;
+const int heap_size = 0;
 const int INF = 100000;
-linked_list A;
-int packets_handled = 1;
+const int packets_handled = 1;
 
 auto g_lock()
 {
