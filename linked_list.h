@@ -191,7 +191,8 @@ void linked_list::set_key(int key, int index)
 }
 linked_list::linked_list() : count(0)
 {
-    start(nullptr), end(nullptr)
+    start = nullptr;
+    end = nullptr;
 }
 int linked_list::get_count()
 {
