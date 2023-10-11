@@ -165,7 +165,7 @@ node *create_node(char *sent)
 }
 class linked_list
 {
-    int count;
+    int count = 0;
     node *start;
     node *end;
 
@@ -189,7 +189,7 @@ void linked_list::set_key(int key, int index)
     node *n = get_node(index);
     n->key = key;
 }
-linked_list::linked_list() : count(0)
+linked_list::linked_list()
 {
     start = nullptr;
     end = nullptr;
