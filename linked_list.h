@@ -82,12 +82,12 @@ node *create_node(char *sent)
 
     std::string del = ",";
     std::string no = strtok(sent, del);
-    std::string ti = strtok(NULL, del);
-    std::string sour = strtok(NULL, del);
-    std::string dest = strtok(NULL, del);
-    std::string prot = strtok(NULL, del);
-    std::string len = strtok(NULL, del);
-    std::string inf = strtok(NULL, del);
+    std::string ti = strtok(nullptr, del);
+    std::string sour = strtok(nullptr, del);
+    std::string dest = strtok(nullptr, del);
+    std::string prot = strtok(nullptr, del);
+    std::string len = strtok(nullptr, del);
+    std::string inf = strtok(nullptr, del);
     n->sno = no;
     n->time = ti;
     n->source = sour;
@@ -160,8 +160,8 @@ node *create_node(char *sent)
         }
     }
 
-    n->left = NULL;
-    n->right = NULL;
+    n->left = nullptr;
+    n->right = nullptr;
 }
 class linked_list
 {
@@ -192,8 +192,8 @@ void linked_list::set_key(int key, int index)
 linked_list::linked_list()
 {
     count = 0;
-    start = NULL;
-    end = NULL;
+    start = nullptr;
+    end = nullptr;
 }
 int linked_list::get_count()
 {
@@ -203,7 +203,7 @@ void linked_list::insert_end(char *sent)
 {
     count++;
     node *n = create_node(sent);
-    if (start == NULL)
+    if (start == nullptr)
     {
         start = n;
         end = n;
@@ -218,14 +218,14 @@ void linked_list::delete_last()
     if (count == 1)
     {
         delete (end);
-        start = end = NULL;
+        start = end = nullptr;
         count--;
     }
-    else if (end != NULL)
+    else if (end != nullptr)
     {
         node *n = end;
         end = end->left;
-        end->right = NULL;
+        end->right = nullptr;
         delete (n);
         count--;
     }
@@ -242,7 +242,7 @@ int linked_list::operator[](int index)
     }
     node *n = start;
     index = index - 1;
-    while (index > 0 && n != NULL)
+    while (index > 0 && n != nullptr)
     {
         n = n->right;
         index--;
@@ -253,13 +253,13 @@ int linked_list::operator[](int index)
 void linked_list::display()
 {
     node *n = start;
-    while (n != NULL)
+    while (n != nullptr)
     {
         std ::cout << "[" << n->protocol << "-" << n->sno << "-" << n->key << "]"
                    << "\n";
         n = n->right;
     }
-    std ::cout << "NULL" << endl;
+    std ::cout << "nullptr" << endl;
 }
 node *linked_list::get_node(int index)
 {
@@ -273,7 +273,7 @@ node *linked_list::get_node(int index)
     }
     node *n = start;
     index--;
-    while (index > 0 && n != NULL)
+    while (index > 0 && n != nullptr)
     {
         n = n->right;
         index--;
