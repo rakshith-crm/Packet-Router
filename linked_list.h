@@ -217,7 +217,6 @@ void linked_list::delete_last()
     }
     else if (end != nullptr)
     {
-        node *n = end;
         end = end->left;
         end->right = nullptr;
         count--;
