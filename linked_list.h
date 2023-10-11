@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string.h>
-using namespace std;
 
 const int prior1 = 700;
 const int prior2 = 600;
@@ -9,6 +8,7 @@ const int prior4 = 400;
 const int prior5 = 300;
 const int prior6 = 200;
 const int prior7 = 100;
+
 struct node
 {
     char sno[10];
@@ -25,8 +25,8 @@ struct node
 
 void display(node *n)
 {
-    cout << n->sno << " " << n->time << " " << n->source << " " << n->destination << " " << n->protocol << " " << n->length << " " << n->info << endl;
-    cout << "PACKET PRIORITY : " << n->key << endl;
+    std ::cout << n->sno << " " << n->time << " " << n->source << " " << n->destination << " " << n->protocol << " " << n->length << " " << n->info << endl;
+    std ::cout << "PACKET PRIORITY : " << n->key << endl;
 }
 void save_copy(node *n1, node *n2)
 {
@@ -96,7 +96,7 @@ node *create_node(char *sent)
     strcpy(n->info, inf);
     if (strcmp(n->protocol, "\"TCP\"") == 0)
     {
-        //     cout<<"\n------Packet Priority 1-------\n";
+        //     std :: cout<<"\n------Packet Priority 1-------\n";
         n->key = prior1--;
         if (prior1 == 600)
         {
@@ -105,7 +105,7 @@ node *create_node(char *sent)
     }
     else if (strcmp(n->protocol, "\"TLsv1\"") == 0)
     {
-        //    cout<<"\n------Packet Priority 2-------\n";
+        //    std :: cout<<"\n------Packet Priority 2-------\n";
         n->key = prior2--;
         if (prior2 == 500)
         {
@@ -114,7 +114,7 @@ node *create_node(char *sent)
     }
     else if (strcmp(n->protocol, "\"SSDP\"") == 0)
     {
-        //     cout<<"\n------Packet Priority 3-------\n";
+        //     std :: cout<<"\n------Packet Priority 3-------\n";
         n->key = prior3--;
         if (prior3 == 400)
         {
@@ -123,7 +123,7 @@ node *create_node(char *sent)
     }
     else if (strcmp(n->protocol, "\"NBNS\"") == 0)
     {
-        //     cout<<"\n------Packet Priority 4-------\n";
+        //     std :: cout<<"\n------Packet Priority 4-------\n";
         n->key = prior4--;
         if (prior4 == 300)
         {
@@ -132,7 +132,7 @@ node *create_node(char *sent)
     }
     else if (strcmp(n->protocol, "\"QVIC\"") == 0)
     {
-        //    cout<<"\n------Packet Priority 5-------\n";
+        //    std :: cout<<"\n------Packet Priority 5-------\n";
         n->key = prior5--;
         if (prior5 == 200)
         {
@@ -141,7 +141,7 @@ node *create_node(char *sent)
     }
     else if (strcmp(n->protocol, "\"MDNS\"") == 0)
     {
-        //     cout<<"\n------Packet Priority 6-------\n";
+        //     std :: cout<<"\n------Packet Priority 6-------\n";
         n->key = prior6--;
         if (prior6 == 100)
         {
@@ -150,7 +150,7 @@ node *create_node(char *sent)
     }
     else
     {
-        //     cout<<"\n------Packet Priority 7-------\n";
+        //     std :: cout<<"\n------Packet Priority 7-------\n";
         n->key = prior7--;
         if (prior7 == 0)
         {
@@ -253,11 +253,11 @@ void linked_list::display()
     node *n = start;
     while (n != NULL)
     {
-        cout << "[" << n->protocol << "-" << n->sno << "-" << n->key << "]"
-             << "\n";
+        std ::cout << "[" << n->protocol << "-" << n->sno << "-" << n->key << "]"
+                   << "\n";
         n = n->right;
     }
-    cout << "NULL" << endl;
+    std ::cout << "NULL" << endl;
 }
 node *linked_list::get_node(int index)
 {
