@@ -38,6 +38,8 @@ void string_to_char(string value, char *t)
     }
     t[i] = '\0';
 }
+void swap(int *, int *) noexcept;
+
 void swap(int *a, int *b)
 {
     int t;
@@ -133,20 +135,19 @@ int maximum(linked_list &A)
 
 node *extract_max(linked_list &A)
 {
-    //    cout<<"\nNumber of Element  : "<<A.get_count()<<endl;
     if (A.get_count() == 1)
     {
-        node *save = new node;
+        auto save = std::unique_ptr<node>();
         save_copy(save, A.get_node(1));
         A.delete_last();
-        //  cout<<"\ndeleted...\n";
+
         return save;
     }
     else if (A.get_count() > 1)
     {
-        node *save = new node;
+        auto save = std::unique_ptr<node>();
         save_copy(save, A.get_node(1));
-        //  A[1] = A[heap_size];
+
         exchange(A.get_node(1), A.get_node(heap_size));
 
         heap_size--;
@@ -158,25 +159,17 @@ node *extract_max(linked_list &A)
 
 void increase_key(linked_list &A, int index, int key)
 {
-    //   cout<<index<<endl;
-    //    A.set_key(key,index);
     while ((index > 1) && (A[get_parent(A, index)] < A[index]))
     {
         exchange(A.get_node(index), A.get_node(get_parent(A, index)));
         index = get_parent(A, index);
-        //    A.display();
-        // cin.get();
-        // cin.get();
     }
-    //  cout<<"hellooo";
 }
 
 void insert(linked_list &A, char *sent)
 {
     heap_size++;
     A.insert_end(sent);
-    //    A.display();
-    // cout<<"hii";
     increase_key(A, heap_size, A.get_key());
 }
 
@@ -238,7 +231,6 @@ int main()
     time_t elapsed = (end - start) / 1000.0;
     cout << "\n\nPACKETS HANDLED : " << packets_handled << endl;
     cout << "\nTime Elapsed : " << (end - start) / 1000.0 << "seconds;  AVERAGE PACKETS HANDLED PER SECOND : " << (float)packets_handled / elapsed << endl;
-    //  A.display();
 
     return 0;
 }
