@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string.h>
+#include <memory>
 
 const int prior1 = 700;
 const int prior2 = 600;
@@ -77,7 +78,7 @@ void exchange(node *n1, node *n2)
 }
 node *create_node(char *sent)
 {
-    node *n = new node;
+    node *n = std::unique_ptr<node>();
 
     std::string del = ",";
     std::string no = strtok(sent, del);
