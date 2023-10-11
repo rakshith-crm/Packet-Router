@@ -4,6 +4,7 @@
 #include <thread>
 #include <mutex>
 #include <chrono>
+#include <string>
 #include <time.h>
 
 const int tree_array_size = 20;
@@ -175,8 +176,7 @@ void insert(linked_list &A, char *sent)
 
 void print_heap(linked_list &A)
 {
-    int i;
-    for (i = 1; i <= heap_size; i++)
+    for (int i = 1; i <= heap_size; i++)
     {
         printf("%d\n", A[i]);
     }
@@ -190,7 +190,7 @@ void receive_packets()
     std::this_thread::sleep_for(200ms);
     string sent;
     sent.resize(1000);
-    char sentence[1000];
+    string sentence;
     ifstream file("1.csv");
     int count = 0;
     getline(file, sent);
@@ -220,7 +220,8 @@ void send_packets()
 }
 int main()
 {
-    time_t start, end;
+    time_t start;
+    time_t end;
     start = clock();
     thread t1(receive_packets);
     thread t2(send_packets);
