@@ -21,7 +21,6 @@ void string_to_char(string value, char *t)
 {
     int n = value.length();
     int i;
-    //   cout<<"n="<<n<<endl;
     for (i = 0; i < n; i++)
     {
         t[i] = value[i];
@@ -36,7 +35,6 @@ void string_to_char(string value, char *t)
                 t[i] = '-';
             }
         }
-        //   cout<<value[i];
     }
     t[i] = '\0';
 }
