@@ -19,7 +19,8 @@ auto g_lock()
 
 void string_to_char(string value, char *t)
 {
-    int n = value.length(), i;
+    int n = value.length();
+    int i;
     //   cout<<"n="<<n<<endl;
     for (i = 0; i < n; i++)
     {
