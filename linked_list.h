@@ -212,7 +212,6 @@ void linked_list::delete_last()
 {
     if (count == 1)
     {
-        delete (end);
         start = end = nullptr;
         count--;
     }
@@ -221,7 +220,6 @@ void linked_list::delete_last()
         node *n = end;
         end = end->left;
         end->right = nullptr;
-        delete (n);
         count--;
     }
 }
