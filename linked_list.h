@@ -11,13 +11,13 @@ const int prior7 = 100;
 
 struct node
 {
-    char sno[10];
-    char time[20];
-    char source[30];
-    char destination[30];
-    char protocol[10];
-    char length[20];
-    char info[400];
+    std::string sno;
+    std::string time;
+    std::string source;
+    std::string destination;
+    std::string protocol;
+    std::string length;
+    std::string info;
     int key;
     node *right;
     node *left;
@@ -41,13 +41,13 @@ void save_copy(node *n1, node *n2)
 }
 void exchange(node *n1, node *n2)
 {
-    char sno[10];
-    char time[20];
-    char source[30];
-    char destination[30];
-    char protocol[10];
-    char length[20];
-    char info[400];
+    std::string sno;
+    std::string time;
+    std::string source;
+    std::string destination;
+    std::string protocol;
+    std::string length;
+    std::string info;
     strcpy(sno, n1->sno);
     strcpy(time, n1->time);
     strcpy(source, n1->source);
@@ -79,22 +79,23 @@ node *create_node(char *sent)
 {
     node *n = new node;
 
-    char del[] = ",";
-    char *no = strtok(sent, del);
-    char *ti = strtok(NULL, del);
-    char *sour = strtok(NULL, del);
-    char *dest = strtok(NULL, del);
-    char *prot = strtok(NULL, del);
-    char *len = strtok(NULL, del);
-    char *inf = strtok(NULL, del);
-    strcpy(n->sno, no);
-    strcpy(n->time, ti);
-    strcpy(n->source, sour);
-    strcpy(n->destination, dest);
-    strcpy(n->protocol, prot);
-    strcpy(n->length, len);
-    strcpy(n->info, inf);
-    if (strcmp(n->protocol, "\"TCP\"") == 0)
+    std::string del = ",";
+    std::string no = strtok(sent, del);
+    std::string ti = strtok(NULL, del);
+    std::string sour = strtok(NULL, del);
+    std::string dest = strtok(NULL, del);
+    std::string prot = strtok(NULL, del);
+    std::string len = strtok(NULL, del);
+    std::string inf = strtok(NULL, del);
+    n->sno = no;
+    n->time = ti;
+    n->source = sour;
+    n->destination = dest;
+    n->protocol = prot;
+    n->length = len;
+    n->info = inf;
+
+    if (n->protocol == "\"TCP\"")
     {
         //     std :: cout<<"\n------Packet Priority 1-------\n";
         n->key = prior1--;
@@ -103,7 +104,7 @@ node *create_node(char *sent)
             prior1 = 700;
         }
     }
-    else if (strcmp(n->protocol, "\"TLsv1\"") == 0)
+    else if (n->protocol == "\"TLsv1\"")
     {
         //    std :: cout<<"\n------Packet Priority 2-------\n";
         n->key = prior2--;
@@ -112,7 +113,7 @@ node *create_node(char *sent)
             prior2 = 600;
         }
     }
-    else if (strcmp(n->protocol, "\"SSDP\"") == 0)
+    else if (n->protocol == "\"SSDP\"")
     {
         //     std :: cout<<"\n------Packet Priority 3-------\n";
         n->key = prior3--;
@@ -121,7 +122,7 @@ node *create_node(char *sent)
             prior3 = 500;
         }
     }
-    else if (strcmp(n->protocol, "\"NBNS\"") == 0)
+    else if (n->protocol == "\"NBNS\"")
     {
         //     std :: cout<<"\n------Packet Priority 4-------\n";
         n->key = prior4--;
@@ -130,7 +131,7 @@ node *create_node(char *sent)
             prior4 = 400;
         }
     }
-    else if (strcmp(n->protocol, "\"QVIC\"") == 0)
+    else if (n->protocol == "\"QVIC\"")
     {
         //    std :: cout<<"\n------Packet Priority 5-------\n";
         n->key = prior5--;
@@ -139,7 +140,7 @@ node *create_node(char *sent)
             prior5 = 300;
         }
     }
-    else if (strcmp(n->protocol, "\"MDNS\"") == 0)
+    else if (n->protocol == "\"MDNS\"")
     {
         //     std :: cout<<"\n------Packet Priority 6-------\n";
         n->key = prior6--;
